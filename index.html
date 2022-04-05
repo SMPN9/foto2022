@@ -1,20 +1,68 @@
-<html>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Asesmen Nasional</title>
 
-  <body>
-    <img src='https://smpn9.github.io/foto2022/1.jpg' style='width:120px'/>
-    <img src='https://smpn9.github.io/foto2022/2.jpg' style='width:120px'/>
-    <img src='https://smpn9.github.io/foto2022/3.jpg' style='width:120px'/>
-    <img src='https://smpn9.github.io/foto2022/4.jpg' style='width:70px'/>
-    <img src='https://smpn9.github.io/foto2022/5.jpg' style='width:70px'/>
-    <img src='https://smpn9.github.io/foto2022/6.jpg' style='width:120px'/>
-    <img src='https://smpn9.github.io/foto2022/7.jpg' style='width:170px'/>
-    <img src='https://smpn9.github.io/foto2022/8.jpg' style='width:120px'/>
-    <img src='https://smpn9.github.io/foto2022/9.jpg' style='width:70px'/>
-    <img src='https://smpn9.github.io/foto2022/10.jpg' style='width:70px'/>
-    <img src='https://smpn9.github.io/foto2022/11.jpg' style='width:130px'/>
-    <img src='https://smpn9.github.io/foto2022/12.jpg' style='width:70px'/>
-    <img src='https://smpn9.github.io/foto2022/13.jpg' style='width:170px'/>
+    <script>var base_url = '/';</script>
+
     
-    <body>
-  </html>
+    <link rel="stylesheet" href="kertasF4.css">
+
+   
+</head>
+<body>	<style>
+		.page {
+			padding: 1cm;
+		}
+
+		td {
+			padding: 5px;
+		}
+img { width:150px;padding:5px}
+ 
+
+
+
+
+	</style>    	<div class="page">
+			<center>
+		 
+             <label style="font-size:30px" > Click Foto untuk Download:</label>
+			<div id="foto"></div>
+			</center>
+		</div>    
+    <script>
+     var ft=document.getElementById("foto")
+	 var fg=''
+	 for (var i=1; i<14;i++){
+	  fg=fg+'<img src="https:/smpn9.github.io/foto2022/'+i+'.jpg" onclick="go(this.src)" />' 
+	 
+	 }
+	 
+	 ft.innerHTML=fg;
+	
+function go(lok){
+ var gg= lok.replace(/^.*[\\\/]/," ")
+ var nmf= gg.replaceAll("%2"," ")
+ 
+fetch(lok)
+  .then(resp => resp.blob())
+  .then(blob => {
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.style.display = 'none';
+    a.href = url;
+    a.download =nmf
+    document.body.appendChild(a);
+    a.click();
+    window.URL.revokeObjectURL(url);
+      })
+  .catch(() =>alert('Gagal Download')); 
+  }	
+	
+	
+	
+    </script></body>
+</html>
